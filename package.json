@@ -1,0 +1,23 @@
+{
+  "name": "soundimage",
+  "version": "0.0.1",
+  "description": "TODO description here...",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmadruga/soundimage.git"
+  },
+  "author": "William Madruga, Daniel Duarte",
+  "license": "???",
+  "bugs": {
+    "url": "https://github.com/wmadruga/soundimage/issues"
+  },
+  "homepage": "https://github.com/wmadruga/soundimage#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-spotify": "^1.2.1"
+  }
+}
