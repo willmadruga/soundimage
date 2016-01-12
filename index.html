@@ -2,15 +2,20 @@
 <head>
   <meta charset="utf-8">
   <title>Sound Image</title>
-
 </head>
 
 <body ng-controller="MainController">
 
+  <input type="text" ng-model="searchTag" ng-change="searchSpotifyTag(searchTag)" placeholder="Search for tracks">
 
-<script src="node_modules/angular/angular-min.js"></script>
-<script src="node_modules/angular-spotify/dist/angular-spotify.min.js"></script>
-<script src="script.js"></script>
+  <ul>
+    <li ng-repeat="info in tracks">
+        {{info.name}} - {{info.href}}
+    </li>
+  </ul>
+
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

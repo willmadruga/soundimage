@@ -1,10 +1,27 @@
-var app = angular.module('ImageSound', ['spotify']);
+angular
+	.module('ImageSound', [])
+	.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
-app.controller('MainController', ['$scope', 'Spotify', function ($scope, Spotify) {
+		var searchTag = $scope.searchTag;
+		var spotifyWebserviceUrl = 'http://ws.spotify.com/search/1/';
+		var spotifyMetadata = 'track.json';
+		var query = '?q=';
 
-	// testing...
-	Spotify.getCategoryPlaylists('tag-name-here').then(function (data) {
-  		console.log(data);
-	})
- 
-}]);
+		$scope.searchSpotifyTag = function (searchTag) {
+
+			if (searchTag.length > 3) {
+
+				$http.get(spotifyWebserviceUrl + spotifyMetadata + query + searchTag)
+				.then(
+					function(res) {
+						console.log(res.data.tracks);
+						$scope.tracks = res.data.tracks;
+					},
+					function(error) {
+						console.log(error);
+					}
+				);
+			}
+		};
+	}]
+);
