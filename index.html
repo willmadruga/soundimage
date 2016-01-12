@@ -9,8 +9,8 @@
   <input type="text" ng-model="searchTag" ng-change="searchSpotifyTag(searchTag)" placeholder="Search for tracks">
 
   <ul>
-    <li ng-repeat="info in tracks">
-        {{info.name}} - {{info.href}}
+    <li ng-repeat="url in trackUrls">
+      <iframe ng-src={{url}} width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
     </li>
   </ul>
 
