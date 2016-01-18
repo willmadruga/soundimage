@@ -17,6 +17,13 @@ angular
       // _______________ DO NOT COMMIT YOUR SDK KEY !!!!!!!!!!!!!!!!!!!!!!!
     });
 
+    hide('#playlistHider'); // this toggle starts hidden
+    
+    // show/hide the playlist
+    $scope.showHidePlaylist = function() {
+      $scope.showSongs = !$scope.showSongs;
+    };
+
     var searchSpotifyTag = function(searchTag) {
       var spotifyWebserviceUrl = 'https://api.spotify.com/v1/search?q=' + searchTag + '&type=playlist';
       $http.get(spotifyWebserviceUrl).then(
@@ -29,6 +36,10 @@ angular
               }
             });
           $scope.trackUrls = urls;
+          
+          show('#playlistHider');
+          $scope.showHidePlaylist(); // toggle playlist
+          
         },
         function(error) {
           console.log(error);
@@ -61,7 +72,7 @@ angular
           );
           
           searchSpotifyTag(searchTag);
-          hideSearch();
+          hide('#searchBar');
           
         } else {
           console.log(response);
@@ -80,10 +91,18 @@ var getRandom = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// hide the search elements    
-var hideSearch = function() {
+// hide elements
+var hide = function(selector) {
   
-  var searchInput = document.querySelectorAll('#searchBar');
-  searchInput[0].style.display = 'none';
+  var element = document.querySelectorAll(selector);
+  element[0].style.display = 'none';
+  
+};
+
+// show elements
+var show = function(selector) {
+  
+  var element = document.querySelectorAll(selector);
+  element[0].style.display = '';
   
 };

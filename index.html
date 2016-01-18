@@ -8,15 +8,18 @@
 <body ng-controller="MainController">
 
   <div id="searchBar">
-    <input type="text" ng-model="searchTag" placeholder="Search for tracks">
+    <input type="text" ng-model="searchTag" placeholder="Search theme">
     <button ng-click="getBackground(searchTag)">Go!</button>
   </div>
   
-  <ul>
-    <li ng-repeat="url in trackUrls">
-      <iframe ng-src={{url}} width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-    </li>
-  </ul>
+  <label id="playlistHider" ng-click="showHidePlaylist()">Playlist</label>
+  <div id="playlists" ng-show="showSongs">
+    <ul>
+      <li ng-repeat="url in trackUrls">
+        <iframe ng-src={{url}} width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+      </li>
+    </ul>
+  </div>   
 
   <script src="500px.js"></script>
   <script src="node_modules/angular/angular.js"></script>
