@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/wmadruga/soundimage#readme",
   "dependencies": {
-    "angular": "^1.4.8",
-    "angular-spotify": "^1.2.1"
+    "angular": "^1.4.8"
   }
 }

@@ -1,27 +1,23 @@
+/* global angular */
 angular
 	.module('ImageSound', [])
 	.config(function($sceProvider) {
 		$sceProvider.enabled(false);
 	})
-	.controller('MainController', ['$scope', '$http', function ($scope, $http) {
-
-		var searchTag = $scope.searchTag;
-		var spotifyWebserviceUrl = 'http://ws.spotify.com/search/1/';
-		var spotifyMetadata = 'track.json';
-		var query = '?q=';
+  .controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
 		$scope.searchSpotifyTag = function (searchTag) {
 
 			if (searchTag.length > 3) {
 
-				$http.get(spotifyWebserviceUrl + spotifyMetadata + query + searchTag)
-				.then(
+        var spotifyWebserviceUrl = 'https://api.spotify.com/v1/search?q=' + searchTag + '&type=playlist';
+				$http.get(spotifyWebserviceUrl).then(
 					function(res) {
+            console.log(res);
 						var urls = [];
-						 res.data.tracks.forEach(function(e, i) {
-							 // just the first ten...
-							 if (i <= 10) {
-								 urls.push('https://embed.spotify.com/?uri=' + e.href);
+						 res.data.playlists.items.forEach(function(e, i) {
+							 if (i <= 10) { // use first 10s only.
+								 urls.push('https://embed.spotify.com/?uri=' + e.uri);
 							 }
 						 });
 						$scope.trackUrls = urls;
@@ -31,6 +27,5 @@ angular
 					}
 				);
 			}
-		};
-	}])
-;
+    };
+  }]);
