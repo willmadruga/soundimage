@@ -9,3 +9,4 @@ Background image from 500px.com and related spotify song playing.
 
 * Spotify app is required.
 * 500px.com API key is required.
+* npm (not extremely necessary if you make the changes... just using angular so far...)
